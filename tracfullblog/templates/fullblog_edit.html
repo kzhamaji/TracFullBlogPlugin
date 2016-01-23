@@ -3,8 +3,15 @@
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:py="http://genshi.edgewall.org/"
-      xmlns:xi="http://www.w3.org/2001/XInclude">
+      xmlns:xi="http://www.w3.org/2001/XInclude"
+      xmlns:i18n="http://genshi.edgewall.org/i18n"
+      i18n:domain="tracfullblog">
   <xi:include href="layout.html" />
+
+  <?python
+    from tracfullblog.core import _
+  ?>
+
   <head>
     <title>Edit Blog Post</title>
   </head>
@@ -27,9 +34,9 @@
       <div id="sidebar">
         <py:if test="is_create and can_create">
         <h4>Naming blog posts</h4>
-        <p>When naming posts (<em>"Post shortname"</em>), it is recommended to make them URL friendly
+        <p i18n:msg="">When naming posts (<em>"Post shortname"</em>), it is recommended to make them URL friendly
           - like avoiding spaces and non-standard characters.</p>
-        <p>Blog posts can also be referenced with <tt>[blog:postname]</tt> wiki link syntax,
+        <p i18n:msg="">Blog posts can also be referenced with <tt>[blog:postname]</tt> wiki link syntax,
           so don't make them too hard to read and write.</p>
         <p>Some names are reserved and not allowed - warnings will appear:</p>
         <ul>
@@ -53,8 +60,8 @@
         <h1 py:if="not blog_edit.version">Create Blog Post</h1>
         <h1 py:if="blog_edit.version">Edit Blog Post</h1>
 
-          <div py:if="not is_allowed" class="system-message">You do not have the required permission to
-              ${is_create and 'create a blog post' or 'edit this blog post'}.</div>
+          <div py:if="not is_allowed" class="system-message" i18n:msg="action">You do not have the required permission to
+              ${is_create and _('create a blog post') or _('edit this blog post')}.</div>
           <form py:if="is_allowed"
                 action="${(is_create and req.href.blog('create')) or req.href.blog('edit', blog_edit.name)}"
                 method="post">
@@ -62,7 +69,7 @@
               <div py:if="defined('blog_action') and blog_action == 'preview'"
                       id="preview" class="blog-comment">
                 <fieldset>
-                  <legend>Comment for new version by ${req.authname}</legend>
+                  <legend i18n:msg="authname">Comment for new version by ${req.authname}</legend>
                   ${wiki_to_html(context, blog_version_comment)}
                 </fieldset>
                 <fieldset>
@@ -88,7 +95,7 @@
                       value="${defined('blog_edit') and blog_edit.title or ''}" />
               </div>
               <div class="field">
-                <label for="blog-body">Post body (you may use
+                <label for="blog-body" i18n:msg="">Post body (you may use
                   <a tabindex="42" href="${href.wiki('WikiFormatting')}">WikiFormatting</a>
                   here):
                 </label><br />
@@ -109,18 +116,18 @@
                       value="${defined('blog_edit') and blog_edit.categories or ''}" />
               </div>
               <div class="field">
-                <label for="blog-version-comment">Comment for this version by ${req.authname}:</label><br />
+                <label for="blog-version-comment" i18n:msg="authname">Comment for this version by ${req.authname}:</label><br />
                 <input id="blog-version-comment" type="text" 
                       name="new_version_comment" size="80"
                       value="${defined('blog_version_comment') and blog_version_comment or ''}" />
               </div>
               <div class="field">
-                <input type="submit" name="blog-preview" value="Preview post" />
+                <input type="submit" name="blog-preview" value="${_('Preview post')}" />
                 <input size="30" type='submit' name="blog-save"
-                    value="Save post" />
+                    value="${_('Save post')}" />
                 <input type="hidden" name="action"
                       value="${defined('blog_edit') and blog_edit.version and 'edit' or 'new'}" />
-                <input type="submit" name="blog-cancel" value="Cancel" />
+                <input type="submit" name="blog-cancel" value="${_('Cancel')}" />
               </div>
               <script type="text/javascript" src="${chrome.htdocs_location}js/wikitoolbar.js" />
             </fieldset>

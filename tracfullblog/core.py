@@ -24,6 +24,9 @@ from trac.util.text import unicode_unquote
 from trac.util.datefmt import to_datetime, utc
 from trac.wiki.api import IWikiSyntaxProvider
 
+from trac.util.translation import domain_functions
+_, add_domain = domain_functions('tracfullblog', ('_', 'add_domain'))
+
 # Relative imports (same package)
 from api import IBlogChangeListener, IBlogManipulator
 from model import BlogPost, get_blog_resources, get_blog_posts
@@ -57,6 +60,14 @@ class FullBlogCore(Component):
     def __init__(self):
         self.env.systeminfo.append(('FullBlog',
                 __import__('tracfullblog', ['__version__']).__version__))
+
+        import pkg_resources
+        try:
+            locale_dir = pkg_resources.resource_filename(__name__, 'locale')
+        except KeyError:
+            pass
+        else:
+            add_domain(self.env.path, locale_dir)
 
     # IPermissionRequestor method
     

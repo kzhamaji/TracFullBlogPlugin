@@ -3,8 +3,15 @@
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:py="http://genshi.edgewall.org/"
-      xmlns:xi="http://www.w3.org/2001/XInclude">
+      xmlns:xi="http://www.w3.org/2001/XInclude"
+      xmlns:i18n="http://genshi.edgewall.org/i18n"
+      i18n:domain="tracfullblog">
   <xi:include href="layout.html" />
+
+  <?python
+    from tracfullblog.core import _
+  ?>
+
   <head>
     <title>Blog : Delete</title>
   </head>
@@ -18,7 +25,7 @@
         <!--! Delete a comment. -->
         <div py:if="defined('blog_comment')">
           <h1>Delete Blog Comment</h1>
-          <p>Delete comment '${blog_comment.number}' by '${blog_comment.author}'
+          <p i18n:msg="number,author,post_name">Delete comment '${blog_comment.number}' by '${blog_comment.author}'
              on blog post '${blog_comment.post_name}'?</p>
           <p>This operation cannot be undone.</p>
           <div class="buttons">
@@ -37,7 +44,7 @@
         <!--! Delete a blog post. -->
         <div py:if="defined('blog_post')">
           <h1>Delete Blog Post</h1>
-          <p>Delete latest or all versions of
+          <p i18n:msg="name">Delete latest or all versions of
                   blog post '${blog_post.name}'.</p>
           <p>If there are no remaining versions, any comments and attachments will also be deleted.</p>
           <p>This operation cannot be undone.</p>

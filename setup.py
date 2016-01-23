@@ -9,6 +9,24 @@ License: BSD
 
 from setuptools import setup
 
+extra = {}
+
+try:
+    from trac.util.dist  import  get_l10n_cmdclass
+    cmdclass = get_l10n_cmdclass()
+    if cmdclass:
+        extra['cmdclass'] = cmdclass
+        extractors = [
+            ('**.py',                'python', None),
+            ('**/templates/**.html', 'genshi', None),
+        ]
+        extra['message_extractors'] = {
+            'tracfullblog': extractors,
+        }
+# i18n is implemented to be optional here
+except ImportError:
+    pass
+
 setup(name='TracFullBlogPlugin',
       version='0.1.5',
       packages=['tracfullblog'],
@@ -34,8 +52,11 @@ setup(name='TracFullBlogPlugin',
                                       'htdocs/css/*.css',
                                       'htdocs/js/*.js',
                                       'templates/*.html',
-                                      'templates/*.rss', ]},
+                                      'templates/*.rss',
+                                      'locale/*/LC_MESSAGES/*.mo']},
       exclude_package_data={'': ['tests/*']},
       test_suite = 'tracfullblog.tests.test_suite',
       tests_require = [],
-      install_requires = [])
+      install_requires = [],
+      **extra
+      )

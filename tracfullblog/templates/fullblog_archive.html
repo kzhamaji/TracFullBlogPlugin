@@ -3,8 +3,15 @@
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:py="http://genshi.edgewall.org/"
-      xmlns:xi="http://www.w3.org/2001/XInclude">
+      xmlns:xi="http://www.w3.org/2001/XInclude"
+      xmlns:i18n="http://genshi.edgewall.org/i18n"
+      i18n:domain="tracfullblog">
   <xi:include href="layout.html" />
+
+  <?python
+    from tracfullblog.core import _
+  ?>
+
   <head>
     <title>Blog Archive</title>
     <meta name="ROBOTS" content="NOINDEX" />

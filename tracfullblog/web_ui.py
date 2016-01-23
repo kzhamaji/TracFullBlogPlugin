@@ -40,7 +40,7 @@ except ImportError:
 
 # Imports from same package
 from model import *
-from core import FullBlogCore
+from core import FullBlogCore, _, add_domain
 from util import map_month_names, parse_period
 
 __all__ = ['FullBlogModule']
@@ -145,9 +145,9 @@ class FullBlogModule(Component):
                 if maxcount and count == maxcount:
                     # Only display a certain number on front page (from config)
                     break
-            data['blog_list_title'] = "Recent posts" + \
+            data['blog_list_title'] = _("Recent posts") + \
                     (len(blog_posts) > maxcount and \
-                        " (max %d) - Browse or Archive for more" % (maxcount,) \
+                        _(" (max %d) - Browse or Archive for more") % (maxcount,) \
                     or '')
             add_link(req, 'alternate', req.href.blog(format='rss'), 'RSS Feed',
                      'application/rss+xml', 'rss')
@@ -352,7 +352,7 @@ class FullBlogModule(Component):
             if command == 'listing-month':
                 from_dt = listing_data['from_dt']
                 to_dt = listing_data['to_dt']
-                title = "Posts for the month of %s %d" % (
+                title = _("Posts for the month of %s %d") % (
                         blog_month_names[from_dt.month -1], from_dt.year)
                 add_link(req, 'alternate', req.href.blog(format='rss'), 'RSS Feed',
                         'application/rss+xml', 'rss')
@@ -360,13 +360,13 @@ class FullBlogModule(Component):
             elif command == 'listing-category':
                 category = listing_data['category']
                 if category:
-                    title = "Posts in category %s" % category
+                    title = _("Posts in category %s") % category
                     add_link(req, 'alternate', req.href.blog('category', category,
                         format='rss'), 'RSS Feed', 'application/rss+xml', 'rss')
             elif command == 'listing-author':
                 author = listing_data['author']
                 if author:
-                    title = "Posts by author %s" % author
+                    title = _("Posts by author %s") % author
                     add_link(req, 'alternate', req.href.blog('author', author,
                         format='rss'), 'RSS Feed', 'application/rss+xml', 'rss')
             if not (author or category or (from_dt and to_dt)):
@@ -392,8 +392,8 @@ class FullBlogModule(Component):
                     blog_core.get_months_authors_categories(
                         user=req.authname, perm=req.perm)
         if 'BLOG_CREATE' in req.perm('blog'):
-            add_ctxtnav(req, 'New Post', href=req.href.blog('create'),
-                    title="Create new Blog Post")
+            add_ctxtnav(req, _('New Post'), href=req.href.blog('create'),
+                    title=_("Create new Blog Post"))
         add_stylesheet(req, 'tracfullblog/css/fullblog.css')
         add_stylesheet(req, 'common/css/code.css')
         data['blog_personal_blog'] = self.env.config.getbool('fullblog',

@@ -29,6 +29,8 @@ __all__ = ['BlogComment', 'BlogPost',
            'get_blog_posts', 'get_blog_comments',
            'group_posts_by_month', 'get_blog_resources']
 
+from core import _
+
 # Public functions
 
 def search_blog_posts(env, terms):
