@@ -139,6 +139,14 @@ div.blogflash li.metadates {
 }
 
 /*
+** for avatar
+*/
+img.userpictures_avatar.fullblog-post {
+    vertical-align: bottom;
+    margin-right: 0.15em;
+}
+
+/*
 ** Adjustments for printing
 */ 
 

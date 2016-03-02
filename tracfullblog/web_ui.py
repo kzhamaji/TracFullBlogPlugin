@@ -38,6 +38,14 @@ except ImportError:
     # 0.12 compat - sorted and set should already be part of Python 2.4
     from operator import itemgetter
 
+try:
+    from userpictures import UserPicturesModule
+    has_UserPictureModule = True
+    from genshi.core import Markup
+except ImportError:
+    has_UserPictureModule = False
+
+
 # Imports from same package
 from model import *
 from core import FullBlogCore, _, add_domain
@@ -74,6 +82,8 @@ class FullBlogModule(Component):
 
     all_rss_icons = BoolOption('fullblog', 'all_rss_icons', False,
         """Controls whether or not to display rss icons more than once""")
+
+    avatar_size = IntOption('fullblog', 'avatar_size', 28)
 
     # INavigationContributor methods
     
@@ -131,6 +141,11 @@ class FullBlogModule(Component):
             "Blog debug: command=%r, pagename=%r, path_items=%r" % (
                 command, pagename, path_items))
 
+        if has_UserPictureModule and self.avatar_size > 0:
+            data['avatars'] = avatars = {}
+        else:
+            avatars = None
+
         if not command:
             # Request for just root (display latest)
             data['blog_post_list'] = []
@@ -142,6 +157,9 @@ class FullBlogModule(Component):
                 if 'BLOG_VIEW' in req.perm(bp.resource):
                     data['blog_post_list'].append(bp)
                     count += 1
+                if avatars != None and bp.author not in avatars:
+                    avatars[bp.author] = self._get_avatar(req, bp.author)
+
                 if maxcount and count == maxcount:
                     # Only display a certain number on front page (from config)
                     break
@@ -199,6 +217,8 @@ class FullBlogModule(Component):
                     else:
                         add_warning(req, reason)
             data['blog_post'] = the_post
+            if avatars != None:
+                avatars[the_post.author] = self._get_avatar(req, the_post.author)
             context = Context.from_request(req, the_post.resource,
                             absurls=format=='rss' and True or False)
             data['context'] = context
@@ -560,3 +580,9 @@ class FullBlogModule(Component):
             command = 'view'
             pagename = path
         return (command, pagename, path_items, listing_data)
+
+    def _get_avatar (self, req, author):
+        upm = UserPicturesModule(self.env)
+        avatar = upm._generate_avatar(req, author,
+                                    'fullblog-post', self.avatar_size).render()
+        return Markup(avatar)
