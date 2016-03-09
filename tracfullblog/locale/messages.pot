@@ -1,0 +1,446 @@
+# Translations template for TracFullBlogPlugin.
+# Copyright (C) 2016 ORGANIZATION
+# This file is distributed under the same license as the
+# TracFullBlogPlugin project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2016.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: TracFullBlogPlugin 0.1.5\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2016-03-09 16:27+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.2.0\n"
+
+#: tracfullblog/web_ui.py:108 tracfullblog/templates/fullblog_view.html:17
+msgid "Blog"
+msgstr ""
+
+#: tracfullblog/web_ui.py:173
+msgid "Recent posts"
+msgstr ""
+
+#: tracfullblog/web_ui.py:175 tracfullblog/web_ui.py:423
+#, python-format
+msgid " (max %d) - Browse or Archive for"
+msgstr ""
+
+#: tracfullblog/web_ui.py:176 tracfullblog/web_ui.py:424
+msgid "more"
+msgstr ""
+
+#: tracfullblog/web_ui.py:384
+#, python-format
+msgid "Posts for the month of %s %d"
+msgstr ""
+
+#: tracfullblog/web_ui.py:394
+#, python-format
+msgid "Posts in category %s"
+msgstr ""
+
+#: tracfullblog/web_ui.py:402
+#, python-format
+msgid "Posts by author %s"
+msgstr ""
+
+#: tracfullblog/web_ui.py:446
+msgid "New Post"
+msgstr ""
+
+#: tracfullblog/web_ui.py:447
+msgid "Create new Blog Post"
+msgstr ""
+
+#: tracfullblog/web_ui.py:508
+msgid "Blog details"
+msgstr ""
+
+#: tracfullblog/templates/fullblog_admin.html:9
+msgid "Blog Admin"
+msgstr ""
+
+#: tracfullblog/templates/fullblog_admin.html:14
+msgid "Blog Settings and Information"
+msgstr ""
+
+#: tracfullblog/templates/fullblog_admin.html:16
+msgid "Edit various settings for the Blog module."
+msgstr ""
+
+#: tracfullblog/templates/fullblog_admin.html:22
+msgid "Blog Settings:"
+msgstr ""
+
+#: tracfullblog/templates/fullblog_admin.html:24
+msgid "Number of posts on front page:"
+msgstr ""
+
+#: tracfullblog/templates/fullblog_admin.html:30
+msgid "Template for naming new blog posts:"
+msgstr ""
+
+#: tracfullblog/templates/fullblog_admin.html:30
+msgid "(username and time substitution available, like"
+msgstr ""
+
+#: tracfullblog/templates/fullblog_admin.html:31
+#, python-format
+msgid "-%Y/%m/%d/my_topic"
+msgstr ""
+
+#: tracfullblog/templates/fullblog_admin.html:44
+msgid "Blog sidebar information:"
+msgstr ""
+
+#: tracfullblog/templates/fullblog_admin.html:47
+msgid "Text to display in Blog sidebar (you may use"
+msgstr ""
+
+#: tracfullblog/templates/fullblog_admin.html:48
+msgid "WikiFormatting"
+msgstr ""
+
+#: tracfullblog/templates/fullblog_admin.html:48
+msgid "here):"
+msgstr ""
+
+#: tracfullblog/templates/fullblog_archive.html:16
+#: tracfullblog/templates/fullblog_archive.html:33
+msgid "Blog Archive"
+msgstr ""
+
+#: tracfullblog/templates/fullblog_archive.html:34
+#: tracfullblog/templates/fullblog_macro_monthlist.html:6
+msgid "No blog posts."
+msgstr ""
+
+#: tracfullblog/templates/fullblog_delete.html:16
+msgid "Blog : Delete"
+msgstr ""
+
+#: tracfullblog/templates/fullblog_delete.html:27
+msgid "Delete Blog Comment"
+msgstr ""
+
+#: tracfullblog/templates/fullblog_delete.html:28
+#, python-format
+msgid ""
+"Delete comment '%(number)s' by '%(author)s'\n"
+"             on blog post '%(post_name)s'?"
+msgstr ""
+
+#: tracfullblog/templates/fullblog_delete.html:30
+#: tracfullblog/templates/fullblog_delete.html:50
+msgid "This operation cannot be undone."
+msgstr ""
+
+#: tracfullblog/templates/fullblog_delete.html:36
+msgid "Delete blog comment"
+msgstr ""
+
+#: tracfullblog/templates/fullblog_delete.html:46
+msgid "Delete Blog Post"
+msgstr ""
+
+#: tracfullblog/templates/fullblog_delete.html:47
+#, python-format
+msgid ""
+"Delete latest or all versions of\n"
+"                  blog post '%(name)s'."
+msgstr ""
+
+#: tracfullblog/templates/fullblog_delete.html:49
+msgid ""
+"If there are no remaining versions, any comments and attachments will"
+" also be deleted."
+msgstr ""
+
+#: tracfullblog/templates/fullblog_delete.html:56
+#, python-format
+msgid "Delete latest version (%(version)d)"
+msgstr ""
+
+#: tracfullblog/templates/fullblog_delete.html:59
+msgid "Delete ALL versions"
+msgstr ""
+
+#: tracfullblog/templates/fullblog_edit.html:16
+#: tracfullblog/templates/fullblog_edit.html:61
+msgid "Edit Blog Post"
+msgstr ""
+
+#: tracfullblog/templates/fullblog_edit.html:36
+msgid "Naming blog posts"
+msgstr ""
+
+#: tracfullblog/templates/fullblog_edit.html:37
+msgid ""
+"When naming posts ([1:\"Post shortname\"]), it is recommended to make"
+" them URL friendly\n"
+"          - like avoiding spaces and non-standard characters."
+msgstr ""
+
+#: tracfullblog/templates/fullblog_edit.html:39
+msgid ""
+"Blog posts can also be referenced with [1:\\[blog:postname\\]] wiki "
+"link syntax,\n"
+"          so don't make them too hard to read and write."
+msgstr ""
+
+#: tracfullblog/templates/fullblog_edit.html:41
+msgid "Some names are reserved and not allowed - warnings will appear:"
+msgstr ""
+
+#: tracfullblog/templates/fullblog_edit.html:43
+msgid ""
+"'view', 'create', 'edit', 'archive', 'delete', 'category', 'author' -"
+"\n"
+"            either on their own or as first item in a path."
+msgstr ""
+
+#: tracfullblog/templates/fullblog_edit.html:45
+msgid ""
+"Numbers evaluating to N/M are seen as time periods and\n"
+"            used for month-based browsing."
+msgstr ""
+
+#: tracfullblog/templates/fullblog_edit.html:48
+msgid "The name of a post cannot be changed later."
+msgstr ""
+
+#: tracfullblog/templates/fullblog_edit.html:51
+msgid "Existing categories"
+msgstr ""
+
+#: tracfullblog/templates/fullblog_edit.html:60
+msgid "Create Blog Post"
+msgstr ""
+
+#: tracfullblog/templates/fullblog_edit.html:63
+#, python-format
+msgid ""
+"You do not have the required permission to\n"
+"              %(action)s."
+msgstr ""
+
+#: tracfullblog/templates/fullblog_edit.html:72
+#, python-format
+msgid "Comment for new version by %(authname)s"
+msgstr ""
+
+#: tracfullblog/templates/fullblog_edit.html:76
+msgid "Blog Post Preview"
+msgstr ""
+
+#: tracfullblog/templates/fullblog_edit.html:81
+msgid "Post shortname (for URL):"
+msgstr ""
+
+#: tracfullblog/templates/fullblog_edit.html:87
+msgid "Post shortname (cannot be changed):"
+msgstr ""
+
+#: tracfullblog/templates/fullblog_edit.html:92
+msgid "Title:"
+msgstr ""
+
+#: tracfullblog/templates/fullblog_edit.html:98
+msgid ""
+"Post body (you may use\n"
+"                  [1:WikiFormatting]\n"
+"                  here):"
+msgstr ""
+
+#: tracfullblog/templates/fullblog_edit.html:106
+msgid "Post Author:"
+msgstr ""
+
+#: tracfullblog/templates/fullblog_edit.html:113
+msgid "Categories (space separated):"
+msgstr ""
+
+#: tracfullblog/templates/fullblog_edit.html:119
+#, python-format
+msgid "Comment for this version by %(authname)s:"
+msgstr ""
+
+#: tracfullblog/templates/fullblog_edit.html:125
+msgid "Preview post"
+msgstr ""
+
+#: tracfullblog/templates/fullblog_edit.html:126
+msgid "Save post"
+msgstr ""
+
+#: tracfullblog/templates/fullblog_edit.html:130
+#: tracfullblog/templates/fullblog_view.html:150
+msgid "Cancel"
+msgstr ""
+
+#: tracfullblog/templates/fullblog_macro_monthlist.html:10
+msgid "-- Posted on"
+msgstr ""
+
+#: tracfullblog/templates/fullblog_macro_monthlist.html:12
+msgid ": author"
+msgstr ""
+
+#: tracfullblog/templates/fullblog_macro_monthlist.html:15
+msgid ": categories"
+msgstr ""
+
+#: tracfullblog/templates/fullblog_macro_post.html:14
+msgid "(Read more)"
+msgstr ""
+
+#: tracfullblog/templates/fullblog_macro_post.html:17
+msgid "Posted:"
+msgstr ""
+
+#: tracfullblog/templates/fullblog_macro_post.html:18
+msgid "(Updated:"
+msgstr ""
+
+#: tracfullblog/templates/fullblog_macro_post.html:22
+msgid "Author:"
+msgstr ""
+
+#: tracfullblog/templates/fullblog_macro_post.html:24
+msgid "Categories:"
+msgstr ""
+
+#: tracfullblog/templates/fullblog_macro_post.html:28
+msgid "(none)"
+msgstr ""
+
+#: tracfullblog/templates/fullblog_macro_post.html:31
+#: tracfullblog/templates/fullblog_view.html:87
+msgid "Comments"
+msgstr ""
+
+#: tracfullblog/templates/fullblog_sidebar.html:8
+msgid "This blog does not yet have an 'About' post."
+msgstr ""
+
+#: tracfullblog/templates/fullblog_sidebar.html:11
+msgid "Create 'About' post."
+msgstr ""
+
+#: tracfullblog/templates/fullblog_sidebar.html:15
+msgid "About:"
+msgstr ""
+
+#: tracfullblog/templates/fullblog_sidebar.html:24
+#: tracfullblog/templates/fullblog_sidebar.html:53
+#: tracfullblog/templates/fullblog_sidebar.html:70
+msgid "RSS"
+msgstr ""
+
+#: tracfullblog/templates/fullblog_sidebar.html:25
+#: tracfullblog/templates/fullblog_sidebar.html:54
+#: tracfullblog/templates/fullblog_sidebar.html:71
+msgid "rss"
+msgstr ""
+
+#: tracfullblog/templates/fullblog_sidebar.html:27
+msgid "Archive:"
+msgstr ""
+
+#: tracfullblog/templates/fullblog_sidebar.html:28
+msgid "All posts"
+msgstr ""
+
+#: tracfullblog/templates/fullblog_sidebar.html:34
+msgid "Browse by time:"
+msgstr ""
+
+#: tracfullblog/templates/fullblog_sidebar.html:42
+msgid "No posts."
+msgstr ""
+
+#: tracfullblog/templates/fullblog_sidebar.html:48
+msgid "Browse by author:"
+msgstr ""
+
+#: tracfullblog/templates/fullblog_sidebar.html:60
+msgid "No authors."
+msgstr ""
+
+#: tracfullblog/templates/fullblog_sidebar.html:65
+msgid "Browse by category:"
+msgstr ""
+
+#: tracfullblog/templates/fullblog_sidebar.html:79
+msgid "No categories."
+msgstr ""
+
+#: tracfullblog/templates/fullblog_view.html:21
+msgid "RSS Feed"
+msgstr ""
+
+#: tracfullblog/templates/fullblog_view.html:52
+msgid "Edit post"
+msgstr ""
+
+#: tracfullblog/templates/fullblog_view.html:67
+msgid "Delete..."
+msgstr ""
+
+#: tracfullblog/templates/fullblog_view.html:93
+msgid "Delete comment"
+msgstr ""
+
+#: tracfullblog/templates/fullblog_view.html:103
+msgid "No comments."
+msgstr ""
+
+#: tracfullblog/templates/fullblog_view.html:108
+msgid "Add New Comment"
+msgstr ""
+
+#: tracfullblog/templates/fullblog_view.html:114
+msgid "Comment preview"
+msgstr ""
+
+#: tracfullblog/templates/fullblog_view.html:116
+msgid "(Warnings)"
+msgstr ""
+
+#: tracfullblog/templates/fullblog_view.html:126
+msgid ""
+"Comment (you may use\n"
+"                      [1:WikiFormatting]\n"
+"                      here):"
+msgstr ""
+
+#: tracfullblog/templates/fullblog_view.html:134
+msgid "Email or username:"
+msgstr ""
+
+#: tracfullblog/templates/fullblog_view.html:146
+msgid "Preview comment"
+msgstr ""
+
+#: tracfullblog/templates/fullblog_view.html:147
+msgid "Add comment"
+msgstr ""
+
+#: tracfullblog/templates/fullblog_view.html:161
+msgid "No blog post named '"
+msgstr ""
+
+#: tracfullblog/templates/fullblog_view.html:164
+msgid "Create it!"
+msgstr ""
+
+#: tracfullblog/templates/fullblog_view.html:176
+msgid "No blog posts available."
+msgstr ""
+

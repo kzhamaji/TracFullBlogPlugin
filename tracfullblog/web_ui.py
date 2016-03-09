@@ -149,27 +149,32 @@ class FullBlogModule(Component):
         else:
             avatars = None
 
+        page = int(req.args.get('page', 1))
+
         if not command:
             # Request for just root (display latest)
             data['blog_post_list'] = []
             count = 0
-            maxcount = self.num_items
+            mincount = (page - 1) * self.num_items
+            maxcount = mincount + self.num_items
             blog_posts = get_blog_posts(self.env)
             for post in blog_posts:
                 bp = BlogPost(self.env, post[0], post[1])
                 if 'BLOG_VIEW' in req.perm(bp.resource):
-                    data['blog_post_list'].append(bp)
                     count += 1
-                if avatars != None and bp.author not in avatars:
-                    avatars[bp.author] = self._get_avatar(req, bp.author)
-
+                    if count <= mincount:
+                        continue
+                    data['blog_post_list'].append(bp)
+                    if avatars != None and bp.author not in avatars:
+                        avatars[bp.author] = self._get_avatar(req, bp.author)
                 if maxcount and count == maxcount:
                     # Only display a certain number on front page (from config)
                     break
-            data['blog_list_title'] = _("Recent posts") + \
-                    (len(blog_posts) > maxcount and \
-                        _(" (max %d) - Browse or Archive for more") % (maxcount,) \
-                    or '')
+            data['blog_list_title'] = _("Recent posts")
+            if len(blog_posts) > maxcount:
+                data['blog_list_title'] += _(" (max %d) - Browse or Archive for") % (self.num_items,)
+                data['blog_list_title_more'] = _("more")
+                data['blog_list_title_href'] = req.href.blog(page=page+1)
             add_link(req, 'alternate', req.href.blog(format='rss'), 'RSS Feed',
                      'application/rss+xml', 'rss')
 
@@ -372,7 +377,7 @@ class FullBlogModule(Component):
             # 2007/10 or category/something or author/theuser
             title = category = author = ''
             from_dt = to_dt = None
-            maxcount = 0
+            mincount = max_count = 0
             if command == 'listing-month':
                 from_dt = listing_data['from_dt']
                 to_dt = listing_data['to_dt']
@@ -383,14 +388,16 @@ class FullBlogModule(Component):
 
             elif command == 'listing-category':
                 category = listing_data['category']
-                maxcount = self.num_items_category
+                mincount = (page - 1) * self.num_items_category
+                maxcount = mincount + self.num_items_category
                 if category:
                     title = _("Posts in category %s") % category
                     add_link(req, 'alternate', req.href.blog('category', category,
                         format='rss'), 'RSS Feed', 'application/rss+xml', 'rss')
             elif command == 'listing-author':
                 author = listing_data['author']
-                maxcount = self.num_items_author
+                mincount = (page - 1) * self.num_items_category
+                maxcount = mincount + self.num_items_author
                 if author:
                     title = _("Posts by author %s") % author
                     add_link(req, 'alternate', req.href.blog('author', author,
@@ -403,15 +410,23 @@ class FullBlogModule(Component):
                         author=author, from_dt=from_dt, to_dt=to_dt):
                 bp = BlogPost(self.env, post[0], post[1])
                 if 'BLOG_VIEW' in req.perm(bp.resource):
-                    blog_posts.append(bp)
                     count += 1
-                if avatars != None and bp.author not in avatars:
-                    avatars[bp.author] = self._get_avatar(req, bp.author)
+                    if count <= mincount:
+                        continue
+                    blog_posts.append(bp)
+                    if avatars != None and bp.author not in avatars:
+                        avatars[bp.author] = self._get_avatar(req, bp.author)
                 if maxcount and count == maxcount:
                     break
 
             if maxcount and count == maxcount:
-                title += _(" (max %d) - Browse or Archive for more") % (maxcount,)
+                title += _(" (max %d) - Browse or Archive for") % (maxcount - mincount)
+                data['blog_list_title_more'] = _("more")
+                if category:
+                    rs = u'category/' + category
+                else:
+                    rs = u'author/' + author
+                data['blog_list_title_href'] = req.href.blog(rs, page=page+1)
 
             data['blog_post_list'] = blog_posts
             data['blog_list_title'] = title

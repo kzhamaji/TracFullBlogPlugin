@@ -168,7 +168,11 @@
 
         <!--! View list of posts -->
         <py:if test="defined('blog_post_list')">
-          <div class="blog-list-title">${blog_list_title}</div>
+          <div class="blog-list-title">${blog_list_title}
+          <py:if test="blog_list_title_more">
+            <a href="${blog_list_title_href}">${blog_list_title_more}</a>
+          </py:if>
+          </div>
           <p py:if="not len(blog_post_list)">
             No blog posts available.
           </p>

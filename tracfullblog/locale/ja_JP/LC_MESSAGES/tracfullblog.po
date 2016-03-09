@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TracFullBlogPlugin 0.1.5\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2016-01-23 23:59+0900\n"
+"POT-Creation-Date: 2016-03-09 16:27+0900\n"
 "PO-Revision-Date: 2016-01-23 21:01+0900\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: ja_JP\n"
@@ -19,101 +19,104 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.2.0\n"
 
-#: tracfullblog/web_ui.py:95 tracfullblog/templates/fullblog_view.html:17
+#: tracfullblog/web_ui.py:108 tracfullblog/templates/fullblog_view.html:17
 msgid "Blog"
 msgstr "ブログ"
 
-#: tracfullblog/web_ui.py:148
+#: tracfullblog/web_ui.py:173
 msgid "Recent posts"
 msgstr "最新の投稿"
 
-#: tracfullblog/web_ui.py:150
-#, python-format
-msgid " (max %d) - Browse or Archive for more"
-msgstr " (%d 件まで) - もっと見る"
+#: tracfullblog/web_ui.py:175 tracfullblog/web_ui.py:423
+msgid " (max %d) - Browse or Archive for"
+msgstr " (%d 件まで) - "
 
-#: tracfullblog/web_ui.py:355
+#: tracfullblog/web_ui.py:176 tracfullblog/web_ui.py:424
+msgid "more"
+msgstr "もっと見る"
+
+#: tracfullblog/web_ui.py:384
 #, python-format
 msgid "Posts for the month of %s %d"
 msgstr "%s %d の投稿"
 
-#: tracfullblog/web_ui.py:363
+#: tracfullblog/web_ui.py:394
 #, python-format
 msgid "Posts in category %s"
 msgstr "%s カテゴリの投稿"
 
-#: tracfullblog/web_ui.py:369
+#: tracfullblog/web_ui.py:402
 #, python-format
 msgid "Posts by author %s"
 msgstr "%s の投稿"
 
-#: tracfullblog/web_ui.py:395
+#: tracfullblog/web_ui.py:446
 msgid "New Post"
 msgstr "新規投稿"
 
-#: tracfullblog/web_ui.py:396
+#: tracfullblog/web_ui.py:447
 msgid "Create new Blog Post"
 msgstr "新しい投稿のを作成"
 
-#: tracfullblog/web_ui.py:457
+#: tracfullblog/web_ui.py:508
 msgid "Blog details"
 msgstr "ブログ詳細"
 
-#: tracfullblog/templates/fullblog_admin.html:11
+#: tracfullblog/templates/fullblog_admin.html:9
 msgid "Blog Admin"
 msgstr ""
 
-#: tracfullblog/templates/fullblog_admin.html:16
+#: tracfullblog/templates/fullblog_admin.html:14
 msgid "Blog Settings and Information"
 msgstr ""
 
-#: tracfullblog/templates/fullblog_admin.html:18
+#: tracfullblog/templates/fullblog_admin.html:16
 msgid "Edit various settings for the Blog module."
 msgstr ""
 
-#: tracfullblog/templates/fullblog_admin.html:24
+#: tracfullblog/templates/fullblog_admin.html:22
 msgid "Blog Settings:"
 msgstr ""
 
-#: tracfullblog/templates/fullblog_admin.html:26
+#: tracfullblog/templates/fullblog_admin.html:24
 msgid "Number of posts on front page:"
 msgstr ""
 
-#: tracfullblog/templates/fullblog_admin.html:32
+#: tracfullblog/templates/fullblog_admin.html:30
 msgid "Template for naming new blog posts:"
 msgstr ""
 
-#: tracfullblog/templates/fullblog_admin.html:32
+#: tracfullblog/templates/fullblog_admin.html:30
 msgid "(username and time substitution available, like"
 msgstr ""
 
-#: tracfullblog/templates/fullblog_admin.html:33
+#: tracfullblog/templates/fullblog_admin.html:31
 #, python-format
 msgid "-%Y/%m/%d/my_topic"
 msgstr ""
 
-#: tracfullblog/templates/fullblog_admin.html:46
+#: tracfullblog/templates/fullblog_admin.html:44
 msgid "Blog sidebar information:"
 msgstr ""
 
-#: tracfullblog/templates/fullblog_admin.html:49
+#: tracfullblog/templates/fullblog_admin.html:47
 msgid "Text to display in Blog sidebar (you may use"
 msgstr ""
 
-#: tracfullblog/templates/fullblog_admin.html:50
+#: tracfullblog/templates/fullblog_admin.html:48
 msgid "WikiFormatting"
 msgstr ""
 
-#: tracfullblog/templates/fullblog_admin.html:50
+#: tracfullblog/templates/fullblog_admin.html:48
 msgid "here):"
 msgstr ""
 
-#: tracfullblog/templates/fullblog_archive.html:11
-#: tracfullblog/templates/fullblog_archive.html:28
+#: tracfullblog/templates/fullblog_archive.html:16
+#: tracfullblog/templates/fullblog_archive.html:33
 msgid "Blog Archive"
 msgstr "アーカイブ"
 
-#: tracfullblog/templates/fullblog_archive.html:29
+#: tracfullblog/templates/fullblog_archive.html:34
 #: tracfullblog/templates/fullblog_macro_monthlist.html:6
 msgid "No blog posts."
 msgstr "投稿はありません。"
@@ -296,31 +299,31 @@ msgstr ": 投稿者"
 msgid ": categories"
 msgstr ": カテゴリ"
 
-#: tracfullblog/templates/fullblog_macro_post.html:12
+#: tracfullblog/templates/fullblog_macro_post.html:14
 msgid "(Read more)"
 msgstr "(続きを読む)"
 
-#: tracfullblog/templates/fullblog_macro_post.html:15
+#: tracfullblog/templates/fullblog_macro_post.html:17
 msgid "Posted:"
 msgstr "投稿日: "
 
-#: tracfullblog/templates/fullblog_macro_post.html:16
+#: tracfullblog/templates/fullblog_macro_post.html:18
 msgid "(Updated:"
 msgstr "(更新:"
 
-#: tracfullblog/templates/fullblog_macro_post.html:20
+#: tracfullblog/templates/fullblog_macro_post.html:22
 msgid "Author:"
 msgstr "投稿者:"
 
-#: tracfullblog/templates/fullblog_macro_post.html:22
+#: tracfullblog/templates/fullblog_macro_post.html:24
 msgid "Categories:"
 msgstr "カテゴリ"
 
-#: tracfullblog/templates/fullblog_macro_post.html:26
+#: tracfullblog/templates/fullblog_macro_post.html:28
 msgid "(none)"
 msgstr "(なし)"
 
-#: tracfullblog/templates/fullblog_macro_post.html:29
+#: tracfullblog/templates/fullblog_macro_post.html:31
 #: tracfullblog/templates/fullblog_view.html:87
 msgid "Comments"
 msgstr "コメント"
@@ -440,7 +443,7 @@ msgstr "この名前の投稿はありません"
 msgid "Create it!"
 msgstr "作成する"
 
-#: tracfullblog/templates/fullblog_view.html:172
+#: tracfullblog/templates/fullblog_view.html:176
 msgid "No blog posts available."
 msgstr "投稿がありません。"
 
@@ -451,10 +454,5 @@ msgstr "投稿がありません。"
 #~ msgstr ""
 
 #~ msgid ""
-#~ msgstr ""
-
-#~ msgid ""
-#~ "Delete latest or all versions of\n"
-#~ "                  blog post '"
 #~ msgstr ""
 
