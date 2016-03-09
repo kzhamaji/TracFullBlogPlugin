@@ -77,6 +77,9 @@ class FullBlogModule(Component):
         """Option to specify how many recent posts to display on the
         front page of the Blog (and RSS feeds).""")
 
+    num_items_author = IntOption('fullblog', 'num_items_author', 0)
+    num_items_category = IntOption('fullblog', 'num_items_category', 0)
+
     archive_rss_icon = BoolOption('fullblog', 'archive_rss_icon', True,
         """Controls whether or not to display the rss icon""")
 
@@ -369,6 +372,7 @@ class FullBlogModule(Component):
             # 2007/10 or category/something or author/theuser
             title = category = author = ''
             from_dt = to_dt = None
+            maxcount = 0
             if command == 'listing-month':
                 from_dt = listing_data['from_dt']
                 to_dt = listing_data['to_dt']
@@ -379,12 +383,14 @@ class FullBlogModule(Component):
 
             elif command == 'listing-category':
                 category = listing_data['category']
+                maxcount = self.num_items_category
                 if category:
                     title = _("Posts in category %s") % category
                     add_link(req, 'alternate', req.href.blog('category', category,
                         format='rss'), 'RSS Feed', 'application/rss+xml', 'rss')
             elif command == 'listing-author':
                 author = listing_data['author']
+                maxcount = self.num_items_author
                 if author:
                     title = _("Posts by author %s") % author
                     add_link(req, 'alternate', req.href.blog('author', author,
@@ -392,11 +398,19 @@ class FullBlogModule(Component):
             if not (author or category or (from_dt and to_dt)):
                 raise HTTPNotFound("Not a valid path for viewing blog posts.")
             blog_posts = []
+            count = 0
             for post in get_blog_posts(self.env, category=category,
                         author=author, from_dt=from_dt, to_dt=to_dt):
                 bp = BlogPost(self.env, post[0], post[1])
                 if 'BLOG_VIEW' in req.perm(bp.resource):
                     blog_posts.append(bp)
+                    count += 1
+                if maxcount and count == maxcount:
+                    break
+
+            if maxcount and count == maxcount:
+                title += _(" (max %d) - Browse or Archive for more") % (maxcount,)
+
             data['blog_post_list'] = blog_posts
             data['blog_list_title'] = title
         else:
