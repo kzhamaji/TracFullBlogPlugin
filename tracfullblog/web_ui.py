@@ -405,6 +405,8 @@ class FullBlogModule(Component):
                 if 'BLOG_VIEW' in req.perm(bp.resource):
                     blog_posts.append(bp)
                     count += 1
+                if avatars != None and bp.author not in avatars:
+                    avatars[bp.author] = self._get_avatar(req, bp.author)
                 if maxcount and count == maxcount:
                     break
 
