@@ -262,6 +262,8 @@ class FullBlogModule(Component):
             if command == 'create' and req.method == 'GET' and not the_post.version:
                 # Support appending query arguments for populating intial fields
                 the_post.update_fields(req.args)
+                if self.use_authname:
+                    the_post.update_fields({'author':req.authname})
             if command == 'create' and the_post.version:
                 # Post with name or suggested name already exists
                 if 'BLOG_CREATE' in req.perm and the_post.name == default_pagename \
