@@ -88,6 +88,8 @@ class FullBlogModule(Component):
 
     avatar_size = IntOption('fullblog', 'avatar_size', 28)
 
+    use_authname = BoolOption('fullblog', 'use_authname', False)
+
     # INavigationContributor methods
     
     def get_active_navigation_item(self, req):
@@ -272,6 +274,8 @@ class FullBlogModule(Component):
                         ('', "A post named '%s' already exists. Enter new name."
                                             % the_post.name))
                 the_post = BlogPost(self.env, '')
+                if self.use_authname:
+                    the_post.update_fields({'author':req.authname})
             if command == 'edit':
                 req.perm(the_post.resource).require('BLOG_VIEW') # Starting point
             if req.method == 'POST':
