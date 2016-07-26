@@ -383,7 +383,7 @@ class FullBlogModule(Component):
             # 2007/10 or category/something or author/theuser
             title = category = author = ''
             from_dt = to_dt = None
-            mincount = max_count = 0
+            mincount = maxcount = 0
             if command == 'listing-month':
                 from_dt = listing_data['from_dt']
                 to_dt = listing_data['to_dt']
