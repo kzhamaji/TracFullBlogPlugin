@@ -148,8 +148,7 @@ def get_blog_posts(env, category='', author='', from_dt=None, to_dt=None,
 
     # Execute SQL
     if hasattr(env, 'db_query'):
-        with env.db_query as db:
-            cursor = env.db_query(sql, args)
+        cursor = env.db_query(sql, args)
     else:
         db = env.get_db_cnx()
         cursor = db.cursor()
